@@ -1,1 +1,462 @@
-{"nbformat":4,"nbformat_minor":0,"metadata":{"colab":{"provenance":[],"authorship_tag":"ABX9TyNb84tvBSZTdwY+l9dEfYH7"},"kernelspec":{"name":"python3","display_name":"Python 3"},"language_info":{"name":"python"}},"cells":[{"cell_type":"code","execution_count":2,"metadata":{"colab":{"base_uri":"https://localhost:8080/"},"id":"UDlsl0TfMnhL","executionInfo":{"status":"ok","timestamp":1766040257221,"user_tz":-420,"elapsed":9623,"user":{"displayName":"Kartika Handayani KTH","userId":"14325861556130663937"}},"outputId":"b76c355b-a42c-46b7-88e2-be8629842d95"},"outputs":[{"output_type":"stream","name":"stdout","text":["Collecting streamlit\n","  Downloading streamlit-1.52.2-py3-none-any.whl.metadata (9.8 kB)\n","Requirement already satisfied: altair!=5.4.0,!=5.4.1,<7,>=4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (5.5.0)\n","Requirement already satisfied: blinker<2,>=1.5.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (1.9.0)\n","Requirement already satisfied: cachetools<7,>=4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (6.2.2)\n","Requirement already satisfied: click<9,>=7.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (8.3.1)\n","Requirement already satisfied: numpy<3,>=1.23 in /usr/local/lib/python3.12/dist-packages (from streamlit) (2.0.2)\n","Requirement already satisfied: packaging>=20 in /usr/local/lib/python3.12/dist-packages (from streamlit) (25.0)\n","Requirement already satisfied: pandas<3,>=1.4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (2.2.2)\n","Requirement already satisfied: pillow<13,>=7.1.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (11.3.0)\n","Requirement already satisfied: protobuf<7,>=3.20 in /usr/local/lib/python3.12/dist-packages (from streamlit) (5.29.5)\n","Requirement already satisfied: pyarrow>=7.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (18.1.0)\n","Requirement already satisfied: requests<3,>=2.27 in /usr/local/lib/python3.12/dist-packages (from streamlit) (2.32.4)\n","Requirement already satisfied: tenacity<10,>=8.1.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (9.1.2)\n","Requirement already satisfied: toml<2,>=0.10.1 in /usr/local/lib/python3.12/dist-packages (from streamlit) (0.10.2)\n","Requirement already satisfied: typing-extensions<5,>=4.4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (4.15.0)\n","Requirement already satisfied: watchdog<7,>=2.1.5 in /usr/local/lib/python3.12/dist-packages (from streamlit) (6.0.0)\n","Requirement already satisfied: gitpython!=3.1.19,<4,>=3.0.7 in /usr/local/lib/python3.12/dist-packages (from streamlit) (3.1.45)\n","Collecting pydeck<1,>=0.8.0b4 (from streamlit)\n","  Downloading pydeck-0.9.1-py2.py3-none-any.whl.metadata (4.1 kB)\n","Requirement already satisfied: tornado!=6.5.0,<7,>=6.0.3 in /usr/local/lib/python3.12/dist-packages (from streamlit) (6.5.1)\n","Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (3.1.6)\n","Requirement already satisfied: jsonschema>=3.0 in /usr/local/lib/python3.12/dist-packages (from altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (4.25.1)\n","Requirement already satisfied: narwhals>=1.14.2 in /usr/local/lib/python3.12/dist-packages (from altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (2.13.0)\n","Requirement already satisfied: gitdb<5,>=4.0.1 in /usr/local/lib/python3.12/dist-packages (from gitpython!=3.1.19,<4,>=3.0.7->streamlit) (4.0.12)\n","Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas<3,>=1.4.0->streamlit) (2.9.0.post0)\n","Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas<3,>=1.4.0->streamlit) (2025.2)\n","Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas<3,>=1.4.0->streamlit) (2025.2)\n","Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.12/dist-packages (from requests<3,>=2.27->streamlit) (3.4.4)\n","Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.12/dist-packages (from requests<3,>=2.27->streamlit) (3.11)\n","Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests<3,>=2.27->streamlit) (2.5.0)\n","Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests<3,>=2.27->streamlit) (2025.11.12)\n","Requirement already satisfied: smmap<6,>=3.0.1 in /usr/local/lib/python3.12/dist-packages (from gitdb<5,>=4.0.1->gitpython!=3.1.19,<4,>=3.0.7->streamlit) (5.0.2)\n","Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (3.0.3)\n","Requirement already satisfied: attrs>=22.2.0 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (25.4.0)\n","Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (2025.9.1)\n","Requirement already satisfied: referencing>=0.28.4 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (0.37.0)\n","Requirement already satisfied: rpds-py>=0.7.1 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit) (0.30.0)\n","Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil>=2.8.2->pandas<3,>=1.4.0->streamlit) (1.17.0)\n","Downloading streamlit-1.52.2-py3-none-any.whl (9.0 MB)\n","\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m9.0/9.0 MB\u001b[0m \u001b[31m107.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n","\u001b[?25hDownloading pydeck-0.9.1-py2.py3-none-any.whl (6.9 MB)\n","\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m6.9/6.9 MB\u001b[0m \u001b[31m119.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n","\u001b[?25hInstalling collected packages: pydeck, streamlit\n","Successfully installed pydeck-0.9.1 streamlit-1.52.2\n"]}],"source":["!pip install streamlit\n","import streamlit as st\n","import pandas as pd\n","import plotly.express as px\n","import plotly.graph_objects as go\n","from datetime import datetime\n","from pathlib import Path"]},{"cell_type":"code","source":["# ========================================\n","# PAGE CONFIG\n","# ========================================\n","st.set_page_config(\n","    page_title=\"Dashboard RUP 2025 - Complete\",\n","    page_icon=\"📊\",\n","    layout=\"wide\",\n","    initial_sidebar_state=\"expanded\"\n",")\n","\n","# ========================================\n","# CUSTOM CSS\n","# ========================================\n","st.markdown(\"\"\"\n","    <style>\n","    .main-header {\n","        font-size: 2.5rem;\n","        font-weight: bold;\n","        color: #1f77b4;\n","        text-align: center;\n","        padding: 1rem 0;\n","    }\n","    .metric-card {\n","        background-color: #f0f2f6;\n","        padding: 1rem;\n","        border-radius: 0.5rem;\n","    }\n","    </style>\n","\"\"\", unsafe_allow_html=True)\n","\n","# ========================================\n","# LOAD DATA with CACHING\n","# ========================================\n","@st.cache_data(ttl=3600)  # Cache for 1 hour\n","def load_data():\n","    \"\"\"Load RUP data with caching\"\"\"\n","    project_root = Path.cwd()\n","    data_path = project_root / 'sample_data/RUP-PaketPenyedia-Terumumkan-2025.parquet'\n","\n","    if not data_path.exists():\n","        st.error(f\"Dataset not found at {data_path}\")\n","        st.stop()\n","\n","    df = pd.read_parquet(data_path)\n","    # Convert date column\n","    df['tgl_pengumuman_paket'] = pd.to_datetime(df['tgl_pengumuman_paket'])\n","    return df\n","\n","# Load data with progress\n","with st.spinner('⏳ Loading data...'):\n","    df = load_data()\n","\n","# ========================================\n","# HEADER\n","# ========================================\n","st.markdown('<h1 class=\"main-header\">📊 Dashboard RUP 2025 - Production Ready</h1>', unsafe_allow_html=True)\n","st.markdown(\"Dashboard lengkap untuk analisis dan monitoring Rencana Umum Pengadaan\")\n","st.markdown(\"---\")\n","\n","# ========================================\n","# SIDEBAR FILTERS\n","# ========================================\n","st.sidebar.header(\"🔍 Filter Data\")\n","\n","# Metode filter\n","st.sidebar.subheader(\"Metode Pengadaan\")\n","metode_options = ['Semua'] + sorted(df['metode_pengadaan'].unique().tolist())\n","selected_metode = st.sidebar.selectbox('', metode_options, key='metode')\n","\n","# Jenis filter\n","st.sidebar.subheader(\"Jenis Pengadaan\")\n","jenis_options = ['Semua'] + sorted(df['jenis_pengadaan'].dropna().unique().tolist())\n","selected_jenis = st.sidebar.selectbox('', jenis_options, key='jenis')\n","\n","# Satker filter (top 20 only for performance)\n","st.sidebar.subheader(\"Satuan Kerja\")\n","top_satkers = df['nama_satker'].value_counts().head(20).index.tolist()\n","satker_options = ['Semua'] + sorted(top_satkers)\n","selected_satker = st.sidebar.selectbox('', satker_options, key='satker')\n","\n","# Pagu range\n","st.sidebar.subheader(\"Range Pagu\")\n","min_pagu = float(df['pagu'].min())\n","max_pagu = float(df['pagu'].max())\n","pagu_range = st.sidebar.slider(\n","    'Dalam Miliar Rp:',\n","    min_value=min_pagu/1e9,\n","    max_value=max_pagu/1e9,\n","    value=(min_pagu/1e9, max_pagu/1e9),\n","    format=\"%.2f\"\n",")\n","\n","# Status filters\n","st.sidebar.subheader(\"Status Khusus\")\n","show_pdn = st.sidebar.checkbox('Hanya PDN', False)\n","show_ukm = st.sidebar.checkbox('Hanya UKM', False)\n","show_pradipa = st.sidebar.checkbox('Hanya PRADIPA', False)\n","\n","# ========================================\n","# APPLY FILTERS\n","# ========================================\n","@st.cache_data\n","def apply_filters(_df, metode, jenis, satker, pagu_min, pagu_max, pdn, ukm, pradipa):\n","    \"\"\"Apply filters with caching\"\"\"\n","    filtered = _df.copy()\n","\n","    if metode != 'Semua':\n","        filtered = filtered[filtered['metode_pengadaan'] == metode]\n","\n","    if jenis != 'Semua':\n","        filtered = filtered[filtered['jenis_pengadaan'] == jenis]\n","\n","    if satker != 'Semua':\n","        filtered = filtered[filtered['nama_satker'] == satker]\n","\n","    filtered = filtered[\n","        (filtered['pagu'] >= pagu_min * 1e9) &\n","        (filtered['pagu'] <= pagu_max * 1e9)\n","    ]\n","\n","    if pdn:\n","        filtered = filtered[filtered['status_pdn'] == 'PDN']\n","\n","    if ukm:\n","        filtered = filtered[filtered['status_ukm'] == 'UKM']\n","\n","    if pradipa:\n","        filtered = filtered[filtered['status_pradipa'] == 'PraDIPA']\n","\n","    return filtered\n","\n","filtered_df = apply_filters(\n","    df, selected_metode, selected_jenis, selected_satker,\n","    pagu_range[0], pagu_range[1],\n","    show_pdn, show_ukm, show_pradipa\n",")\n","\n","# Check if empty\n","if len(filtered_df) == 0:\n","    st.warning(\"⚠️ Tidak ada data yang sesuai dengan filter yang dipilih.\")\n","    st.info(\"💡 Coba sesuaikan filter di sidebar\")\n","    st.stop()\n","\n","# ========================================\n","# KEY METRICS\n","# ========================================\n","st.header(\"📈 Key Performance Indicators\")\n","\n","col1, col2, col3, col4 = st.columns(4)\n","\n","with col1:\n","    total_paket = len(filtered_df)\n","    pct = (total_paket / len(df) * 100)\n","    st.metric(\n","        label=\"Total Paket\",\n","        value=f\"{total_paket:,}\",\n","        delta=f\"{pct:.1f}% dari total\"\n","    )\n","\n","with col2:\n","    total_pagu = filtered_df['pagu'].sum()\n","    pct_pagu = (total_pagu / df['pagu'].sum() * 100)\n","    st.metric(\n","        label=\"Total Pagu\",\n","        value=f\"Rp {total_pagu/1e12:.2f} T\",\n","        delta=f\"{pct_pagu:.1f}% dari total\"\n","    )\n","\n","with col3:\n","    avg_pagu = filtered_df['pagu'].mean()\n","    st.metric(\n","        label=\"Rata-rata Pagu\",\n","        value=f\"Rp {avg_pagu/1e6:.2f} Jt\"\n","    )\n","\n","with col4:\n","    total_satker = filtered_df['nama_satker'].nunique()\n","    st.metric(\n","        label=\"Jumlah Satker\",\n","        value=f\"{total_satker:,}\"\n","    )\n","\n","st.markdown(\"---\")\n","\n","# ========================================\n","# TABS FOR DIFFERENT ANALYSES\n","# ========================================\n","tab1, tab2, tab3, tab4 = st.tabs([\n","    \"📊 Overview & Distribution\",\n","    \"🏢 Top Satker\",\n","    \"📅 Trend Analysis\",\n","    \"📋 Data Table & Export\"\n","])\n","\n","# ========================================\n","# TAB 1: Overview\n","# ========================================\n","with tab1:\n","    st.header(\"Overview & Distribution\")\n","\n","    col1, col2 = st.columns(2)\n","\n","    with col1:\n","        st.subheader(\"Distribusi Metode Pengadaan\")\n","        metode_count = filtered_df['metode_pengadaan'].value_counts()\n","        fig = px.pie(\n","            values=metode_count.values,\n","            names=metode_count.index,\n","            title='',\n","            hole=0.3\n","        )\n","        fig.update_traces(textposition='inside', textinfo='percent+label')\n","        st.plotly_chart(fig, use_container_width=True)\n","\n","    with col2:\n","        st.subheader(\"Distribusi Jenis Pengadaan\")\n","        jenis_count = filtered_df['jenis_pengadaan'].value_counts().head(5)\n","        fig = px.bar(\n","            x=jenis_count.index,\n","            y=jenis_count.values,\n","            labels={'x': 'Jenis', 'y': 'Jumlah Paket'},\n","            color=jenis_count.values,\n","            color_continuous_scale='Blues'\n","        )\n","        fig.update_layout(showlegend=False)\n","        st.plotly_chart(fig, use_container_width=True)\n","\n","    # Status Distribution\n","    st.subheader(\"Distribusi Status Khusus\")\n","    status_data = {\n","        'Status': ['PDN', 'UKM', 'PRADIPA'],\n","        'Ya': [\n","            (filtered_df['status_pdn'] == 'PDN').sum(),\n","            (filtered_df['status_ukm'] == 'UKM').sum(),\n","            (filtered_df['status_pradipa'] == 'PraDIPA').sum()\n","        ],\n","        'Tidak': [\n","            (filtered_df['status_pdn'] != 'PDN').sum(),\n","            (filtered_df['status_ukm'] != 'UKM').sum(),\n","            (filtered_df['status_pradipa'] != 'PraDIPA').sum()\n","        ]\n","    }\n","\n","    fig = go.Figure(data=[\n","        go.Bar(name='Ya', x=status_data['Status'], y=status_data['Ya']),\n","        go.Bar(name='Tidak', x=status_data['Status'], y=status_data['Tidak'])\n","    ])\n","    fig.update_layout(barmode='stack', height=400)\n","    st.plotly_chart(fig, use_container_width=True)\n","\n","# ========================================\n","# TAB 2: Top Satker\n","# ========================================\n","with tab2:\n","    st.header(\"Top Satuan Kerja\")\n","\n","    col1, col2 = st.columns(2)\n","\n","    with col1:\n","        st.subheader(\"Berdasarkan Jumlah Paket\")\n","        top_satker_count = filtered_df['nama_satker'].value_counts().head(10)\n","        fig = px.bar(\n","            y=top_satker_count.index,\n","            x=top_satker_count.values,\n","            orientation='h',\n","            labels={'x': 'Jumlah Paket', 'y': 'Satker'},\n","            color=top_satker_count.values,\n","            color_continuous_scale='Viridis'\n","        )\n","        fig.update_layout(height=500, showlegend=False)\n","        st.plotly_chart(fig, use_container_width=True)\n","\n","    with col2:\n","        st.subheader(\"Berdasarkan Total Pagu\")\n","        top_satker_pagu = filtered_df.groupby('nama_satker')['pagu'].sum().sort_values(ascending=False).head(10)\n","        fig = px.bar(\n","            y=top_satker_pagu.index,\n","            x=top_satker_pagu.values / 1e9,\n","            orientation='h',\n","            labels={'x': 'Total Pagu (Miliar Rp)', 'y': 'Satker'},\n","            color=top_satker_pagu.values,\n","            color_continuous_scale='RdYlGn'\n","        )\n","        fig.update_layout(height=500, showlegend=False)\n","        st.plotly_chart(fig, use_container_width=True)\n","\n","    # Detailed table\n","    st.subheader(\"Detail Statistik Satker\")\n","    satker_stats = filtered_df.groupby('nama_satker').agg({\n","        'pagu': ['count', 'sum', 'mean']\n","    }).round(2)\n","    satker_stats.columns = ['Jumlah Paket', 'Total Pagu', 'Rata-rata Pagu']\n","    satker_stats['Total Pagu (M)'] = (satker_stats['Total Pagu'] / 1e9).round(2)\n","    satker_stats['Rata-rata (Jt)'] = (satker_stats['Rata-rata Pagu'] / 1e6).round(2)\n","    satker_stats = satker_stats.sort_values('Total Pagu', ascending=False).head(15)\n","\n","    st.dataframe(\n","        satker_stats[['Jumlah Paket', 'Total Pagu (M)', 'Rata-rata (Jt)']],\n","        use_container_width=True\n","    )\n","\n","# ========================================\n","# TAB 3: Trend\n","# ========================================\n","with tab3:\n","    st.header(\"Trend Analysis\")\n","\n","    # Monthly trend\n","    monthly_data = filtered_df.copy()\n","    monthly_data['bulan'] = monthly_data['tgl_pengumuman_paket'].dt.to_period('M').astype(str)\n","\n","    col1, col2 = st.columns(2)\n","\n","    with col1:\n","        st.subheader(\"Tren Jumlah Paket per Bulan\")\n","        monthly_count = monthly_data.groupby('bulan').size().reset_index(name='jumlah')\n","        fig = px.line(\n","            monthly_count,\n","            x='bulan',\n","            y='jumlah',\n","            markers=True,\n","            labels={'bulan': 'Bulan', 'jumlah': 'Jumlah Paket'}\n","        )\n","        fig.update_layout(height=400)\n","        st.plotly_chart(fig, use_container_width=True)\n","\n","    with col2:\n","        st.subheader(\"Tren Total Pagu per Bulan\")\n","        monthly_pagu = monthly_data.groupby('bulan')['pagu'].sum().reset_index()\n","        monthly_pagu['pagu_miliar'] = monthly_pagu['pagu'] / 1e9\n","        fig = px.bar(\n","            monthly_pagu,\n","            x='bulan',\n","            y='pagu_miliar',\n","            labels={'bulan': 'Bulan', 'pagu_miliar': 'Total Pagu (Miliar Rp)'}\n","        )\n","        fig.update_layout(height=400)\n","        st.plotly_chart(fig, use_container_width=True)\n","\n","    # Cumulative trend\n","    st.subheader(\"Kumulatif Pengumuman Paket\")\n","    monthly_count['kumulatif'] = monthly_count['jumlah'].cumsum()\n","    fig = go.Figure()\n","    fig.add_trace(go.Scatter(\n","        x=monthly_count['bulan'],\n","        y=monthly_count['kumulatif'],\n","        mode='lines+markers',\n","        name='Kumulatif',\n","        fill='tozeroy'\n","    ))\n","    fig.update_layout(\n","        xaxis_title=\"Bulan\",\n","        yaxis_title=\"Jumlah Paket (Kumulatif)\",\n","        height=400\n","    )\n","    st.plotly_chart(fig, use_container_width=True)\n","\n","# ========================================\n","# TAB 4: Data Table & Export\n","# ========================================\n","with tab4:\n","    st.header(\"Data Table & Export\")\n","\n","    # Display options\n","    col1, col2 = st.columns([3, 1])\n","    with col1:\n","        st.write(f\"Menampilkan **{len(filtered_df):,}** paket dari total **{len(df):,}** paket\")\n","    with col2:\n","        num_rows = st.selectbox(\"Rows to display:\", [50, 100, 200, 500], index=0)\n","\n","    # Prepare display data\n","    display_cols = ['nama_paket', 'pagu', 'metode_pengadaan', 'jenis_pengadaan', 'nama_satker', 'status_pdn', 'status_ukm']\n","    display_df = filtered_df[display_cols].copy()\n","    display_df['pagu_formatted'] = display_df['pagu'].apply(lambda x: f\"Rp {x/1e9:.2f} M\")\n","\n","    # Data table\n","    st.dataframe(\n","        display_df[['nama_paket', 'pagu_formatted', 'metode_pengadaan', 'jenis_pengadaan', 'nama_satker', 'status_pdn', 'status_ukm']].head(num_rows),\n","        use_container_width=True,\n","        height=500\n","    )\n","\n","    # Export section\n","    st.subheader(\"📥 Export Data\")\n","    col1, col2, col3 = st.columns(3)\n","\n","    with col1:\n","        # CSV export\n","        csv = filtered_df[display_cols].to_csv(index=False).encode('utf-8')\n","        st.download_button(\n","            label=\"Download CSV\",\n","            data=csv,\n","            file_name=f\"rup_filtered_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv\",\n","            mime=\"text/csv\",\n","            use_container_width=True\n","        )\n","\n","    with col2:\n","        # Summary stats export\n","        summary = pd.DataFrame({\n","            'Metric': ['Total Paket', 'Total Pagu (T)', 'Avg Pagu (Jt)', 'Total Satker'],\n","            'Value': [\n","                len(filtered_df),\n","                f\"{filtered_df['pagu'].sum() / 1e12:.2f}\",\n","                f\"{filtered_df['pagu'].mean() / 1e6:.2f}\",\n","                filtered_df['nama_satker'].nunique()\n","            ]\n","        })\n","        csv_summary = summary.to_csv(index=False).encode('utf-8')\n","        st.download_button(\n","            label=\"Download Summary\",\n","            data=csv_summary,\n","            file_name=f\"summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv\",\n","            mime=\"text/csv\",\n","            use_container_width=True\n","        )\n","\n","    with col3:\n","        if st.button(\"🔄 Reset All Filters\", type=\"primary\", use_container_width=True):\n","            st.rerun()\n","\n","# ========================================\n","# FOOTER\n","# ========================================\n","st.markdown(\"---\")\n","st.markdown(\"\"\"\n","    <div style='text-align: center; color: #888; padding: 20px;'>\n","        <p><strong>Dashboard RUP 2025 - Production Ready</strong></p>\n","        <p>Session 4: Streamlit Dashboard Complete | Bootcamp Data Science</p>\n","        <p>Data Source: Sistem Informasi Rencana Umum Pengadaan</p>\n","    </div>\n","\"\"\", unsafe_allow_html=True)\n","\n","# Sidebar footer\n","with st.sidebar:\n","    st.markdown(\"---\")\n","    st.subheader(\"ℹ️ Tentang Dashboard\")\n","    st.info(\"\"\"\n","    Dashboard ini menampilkan analisis komprehensif data RUP 2025 menggunakan:\n","\n","    - **Pandas**: Data manipulation\n","    - **Plotly**: Interactive visualization\n","    - **Streamlit**: Web dashboard\n","\n","    Gunakan filter di atas untuk menyesuaikan tampilan data.\n","    \"\"\")\n","\n","    st.markdown(\"---\")\n","    st.subheader(\"🚀 Deploy\")\n","    st.write(\"\"\"\n","    **Cara deploy ke Streamlit Cloud:**\n","    1. Push code ke GitHub\n","    2. Buka streamlit.io/cloud\n","    3. Connect repository\n","    4. Deploy!\n","    \"\"\")"],"metadata":{"colab":{"base_uri":"https://localhost:8080/"},"id":"C0LjQI1dM-hE","executionInfo":{"status":"ok","timestamp":1766040492768,"user_tz":-420,"elapsed":2093,"user":{"displayName":"Kartika Handayani KTH","userId":"14325861556130663937"}},"outputId":"720cdee6-ca81-4284-9761-4c55c062656a"},"execution_count":11,"outputs":[{"output_type":"stream","name":"stderr","text":["2025-12-18 06:48:09.467 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.469 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.471 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.473 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.474 No runtime found, using MemoryCacheStorageManager\n","2025-12-18 06:48:09.476 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.477 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.478 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.479 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.481 No runtime found, using MemoryCacheStorageManager\n","2025-12-18 06:48:09.483 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.483 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.484 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.485 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.739 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.740 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.741 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.742 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.743 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.744 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.746 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.748 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.748 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.750 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.752 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.753 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.755 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.757 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.759 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.761 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.763 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.763 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.764 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.765 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.767 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.772 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.772 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.776 `label` got an empty value. This is discouraged for accessibility reasons and may be disallowed in the future by raising an exception. Please provide a non-empty label and hide it with label_visibility if needed.\n","Stack (most recent call last):\n","  File \"<frozen runpy>\", line 198, in _run_module_as_main\n","  File \"<frozen runpy>\", line 88, in _run_code\n","  File \"/usr/local/lib/python3.12/dist-packages/colab_kernel_launcher.py\", line 37, in <module>\n","    ColabKernelApp.launch_instance()\n","  File \"/usr/local/lib/python3.12/dist-packages/traitlets/config/application.py\", line 992, in launch_instance\n","    app.start()\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelapp.py\", line 712, in start\n","    self.io_loop.start()\n","  File \"/usr/local/lib/python3.12/dist-packages/tornado/platform/asyncio.py\", line 211, in start\n","    self.asyncio_loop.run_forever()\n","  File \"/usr/lib/python3.12/asyncio/base_events.py\", line 645, in run_forever\n","    self._run_once()\n","  File \"/usr/lib/python3.12/asyncio/base_events.py\", line 1999, in _run_once\n","    handle._run()\n","  File \"/usr/lib/python3.12/asyncio/events.py\", line 88, in _run\n","    self._context.run(self._callback, *self._args)\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 510, in dispatch_queue\n","    await self.process_one()\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 499, in process_one\n","    await dispatch(*args)\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 406, in dispatch_shell\n","    await result\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 730, in execute_request\n","    reply_content = await reply_content\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/ipkernel.py\", line 383, in do_execute\n","    res = shell.run_cell(\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/zmqshell.py\", line 528, in run_cell\n","    return super().run_cell(*args, **kwargs)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 2975, in run_cell\n","    result = self._run_cell(\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3030, in _run_cell\n","    return runner(coro)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/async_helpers.py\", line 78, in _pseudo_sync_runner\n","    coro.send(None)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3257, in run_cell_async\n","    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3473, in run_ast_nodes\n","    if (await self.run_code(code, result,  async_=asy)):\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3553, in run_code\n","    exec(code_obj, self.user_global_ns, self.user_ns)\n","  File \"/tmp/ipython-input-1270236994.py\", line 68, in <cell line: 0>\n","    selected_metode = st.sidebar.selectbox('', metode_options, key='metode')\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/runtime/metrics_util.py\", line 531, in wrapped_func\n","    result = non_optional_func(*args, **kwargs)\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/selectbox.py\", line 470, in selectbox\n","    return self._selectbox(\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/selectbox.py\", line 515, in _selectbox\n","    maybe_raise_label_warnings(label, label_visibility)\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/policies.py\", line 184, in maybe_raise_label_warnings\n","    _LOGGER.warning(\n","2025-12-18 06:48:09.777 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.778 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.779 Session state does not function when running a script without `streamlit run`\n","2025-12-18 06:48:09.780 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.781 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.781 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.782 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.783 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.784 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.790 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.791 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.792 `label` got an empty value. This is discouraged for accessibility reasons and may be disallowed in the future by raising an exception. Please provide a non-empty label and hide it with label_visibility if needed.\n","Stack (most recent call last):\n","  File \"<frozen runpy>\", line 198, in _run_module_as_main\n","  File \"<frozen runpy>\", line 88, in _run_code\n","  File \"/usr/local/lib/python3.12/dist-packages/colab_kernel_launcher.py\", line 37, in <module>\n","    ColabKernelApp.launch_instance()\n","  File \"/usr/local/lib/python3.12/dist-packages/traitlets/config/application.py\", line 992, in launch_instance\n","    app.start()\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelapp.py\", line 712, in start\n","    self.io_loop.start()\n","  File \"/usr/local/lib/python3.12/dist-packages/tornado/platform/asyncio.py\", line 211, in start\n","    self.asyncio_loop.run_forever()\n","  File \"/usr/lib/python3.12/asyncio/base_events.py\", line 645, in run_forever\n","    self._run_once()\n","  File \"/usr/lib/python3.12/asyncio/base_events.py\", line 1999, in _run_once\n","    handle._run()\n","  File \"/usr/lib/python3.12/asyncio/events.py\", line 88, in _run\n","    self._context.run(self._callback, *self._args)\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 510, in dispatch_queue\n","    await self.process_one()\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 499, in process_one\n","    await dispatch(*args)\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 406, in dispatch_shell\n","    await result\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 730, in execute_request\n","    reply_content = await reply_content\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/ipkernel.py\", line 383, in do_execute\n","    res = shell.run_cell(\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/zmqshell.py\", line 528, in run_cell\n","    return super().run_cell(*args, **kwargs)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 2975, in run_cell\n","    result = self._run_cell(\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3030, in _run_cell\n","    return runner(coro)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/async_helpers.py\", line 78, in _pseudo_sync_runner\n","    coro.send(None)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3257, in run_cell_async\n","    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3473, in run_ast_nodes\n","    if (await self.run_code(code, result,  async_=asy)):\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3553, in run_code\n","    exec(code_obj, self.user_global_ns, self.user_ns)\n","  File \"/tmp/ipython-input-1270236994.py\", line 73, in <cell line: 0>\n","    selected_jenis = st.sidebar.selectbox('', jenis_options, key='jenis')\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/runtime/metrics_util.py\", line 531, in wrapped_func\n","    result = non_optional_func(*args, **kwargs)\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/selectbox.py\", line 470, in selectbox\n","    return self._selectbox(\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/selectbox.py\", line 515, in _selectbox\n","    maybe_raise_label_warnings(label, label_visibility)\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/policies.py\", line 184, in maybe_raise_label_warnings\n","    _LOGGER.warning(\n","2025-12-18 06:48:09.794 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.794 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.795 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.796 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.797 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.798 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.799 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.800 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.809 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.810 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.812 `label` got an empty value. This is discouraged for accessibility reasons and may be disallowed in the future by raising an exception. Please provide a non-empty label and hide it with label_visibility if needed.\n","Stack (most recent call last):\n","  File \"<frozen runpy>\", line 198, in _run_module_as_main\n","  File \"<frozen runpy>\", line 88, in _run_code\n","  File \"/usr/local/lib/python3.12/dist-packages/colab_kernel_launcher.py\", line 37, in <module>\n","    ColabKernelApp.launch_instance()\n","  File \"/usr/local/lib/python3.12/dist-packages/traitlets/config/application.py\", line 992, in launch_instance\n","    app.start()\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelapp.py\", line 712, in start\n","    self.io_loop.start()\n","  File \"/usr/local/lib/python3.12/dist-packages/tornado/platform/asyncio.py\", line 211, in start\n","    self.asyncio_loop.run_forever()\n","  File \"/usr/lib/python3.12/asyncio/base_events.py\", line 645, in run_forever\n","    self._run_once()\n","  File \"/usr/lib/python3.12/asyncio/base_events.py\", line 1999, in _run_once\n","    handle._run()\n","  File \"/usr/lib/python3.12/asyncio/events.py\", line 88, in _run\n","    self._context.run(self._callback, *self._args)\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 510, in dispatch_queue\n","    await self.process_one()\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 499, in process_one\n","    await dispatch(*args)\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 406, in dispatch_shell\n","    await result\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/kernelbase.py\", line 730, in execute_request\n","    reply_content = await reply_content\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/ipkernel.py\", line 383, in do_execute\n","    res = shell.run_cell(\n","  File \"/usr/local/lib/python3.12/dist-packages/ipykernel/zmqshell.py\", line 528, in run_cell\n","    return super().run_cell(*args, **kwargs)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 2975, in run_cell\n","    result = self._run_cell(\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3030, in _run_cell\n","    return runner(coro)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/async_helpers.py\", line 78, in _pseudo_sync_runner\n","    coro.send(None)\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3257, in run_cell_async\n","    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3473, in run_ast_nodes\n","    if (await self.run_code(code, result,  async_=asy)):\n","  File \"/usr/local/lib/python3.12/dist-packages/IPython/core/interactiveshell.py\", line 3553, in run_code\n","    exec(code_obj, self.user_global_ns, self.user_ns)\n","  File \"/tmp/ipython-input-1270236994.py\", line 79, in <cell line: 0>\n","    selected_satker = st.sidebar.selectbox('', satker_options, key='satker')\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/runtime/metrics_util.py\", line 531, in wrapped_func\n","    result = non_optional_func(*args, **kwargs)\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/selectbox.py\", line 470, in selectbox\n","    return self._selectbox(\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/selectbox.py\", line 515, in _selectbox\n","    maybe_raise_label_warnings(label, label_visibility)\n","  File \"/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/policies.py\", line 184, in maybe_raise_label_warnings\n","    _LOGGER.warning(\n","2025-12-18 06:48:09.812 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.813 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.814 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.815 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.815 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.817 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.817 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.818 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.819 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.821 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.821 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.822 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.823 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.824 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.825 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.825 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.826 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.828 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.828 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.829 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.830 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.830 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.831 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.833 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.833 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.834 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.834 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.835 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.836 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.837 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.838 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.839 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.839 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.840 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.840 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.842 No runtime found, using MemoryCacheStorageManager\n","2025-12-18 06:48:09.845 No runtime found, using MemoryCacheStorageManager\n","2025-12-18 06:48:09.846 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.847 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.848 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.848 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.935 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.936 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.936 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.938 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.938 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.939 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.940 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.941 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.942 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.942 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.943 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.945 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.945 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.946 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.949 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.951 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.952 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.953 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.954 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.955 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.962 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.963 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.964 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.965 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.966 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.967 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.968 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.969 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.970 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.970 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.971 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.973 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.974 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.975 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.975 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.977 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.977 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.978 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.979 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:09.979 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.503 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:10.517 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.518 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.519 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.521 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.523 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.525 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.527 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.528 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.684 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:10.686 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.690 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.691 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.692 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.694 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.697 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.697 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.698 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.711 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:10.713 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.715 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.716 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.717 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.718 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.720 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.721 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.722 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.724 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.725 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.726 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.728 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.728 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.729 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.791 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:10.797 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.798 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.799 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.802 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.803 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.804 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.805 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.806 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.856 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:10.859 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.861 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.862 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.862 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.863 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.864 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.865 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.866 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.889 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:10.898 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.899 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.899 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.902 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.902 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.903 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.931 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.933 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.935 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.936 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.936 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:10.937 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.002 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:11.005 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.006 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.009 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.009 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.011 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.013 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.016 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.017 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.050 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:11.052 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.055 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.056 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.057 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.058 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.059 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.060 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.061 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.074 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:11.080 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.082 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.084 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.087 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.087 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.091 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.092 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.092 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.093 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.095 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.096 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.096 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.097 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.098 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.100 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.100 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.101 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.103 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.104 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.105 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.106 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.144 Please replace `use_container_width` with `width`.\n","\n","`use_container_width` will be removed after 2025-12-31.\n","\n","For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.\n","2025-12-18 06:48:11.148 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.149 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.150 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.152 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.153 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.154 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.154 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.155 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.156 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.156 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.366 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.367 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.368 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.369 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.369 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.370 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.371 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.377 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.378 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.379 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.380 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.381 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.381 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.383 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.383 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.384 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.385 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.386 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.386 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.388 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.389 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.389 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.391 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.392 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.392 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.393 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.395 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.395 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.396 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.396 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.397 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.398 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.399 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.400 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.401 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.401 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.402 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.402 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.403 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.404 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.405 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.406 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.406 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n","2025-12-18 06:48:11.407 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n"]}]}]}
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from datetime import datetime
+from pathlib import Path
+# ========================================
+# PAGE CONFIG
+# ========================================
+st.set_page_config(
+    page_title="Dashboard RUP 2025 - Complete",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# ========================================
+# CUSTOM CSS
+# ========================================
+st.markdown("""
+    <style>
+    .main-header {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #1f77b4;
+        text-align: center;
+        padding: 1rem 0;
+    }
+    .metric-card {
+        background-color: #f0f2f6;
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# ========================================
+# LOAD DATA with CACHING
+# ========================================
+@st.cache_data(ttl=3600)  # Cache for 1 hour
+def load_data():
+    """Load RUP data with caching"""
+    project_root = Path.cwd()
+    data_path = project_root / 'sample_data/RUP-PaketPenyedia-Terumumkan-2025.parquet'
+
+    if not data_path.exists():
+        st.error(f"Dataset not found at {data_path}")
+        st.stop()
+
+    df = pd.read_parquet(data_path)
+    # Convert date column
+    df['tgl_pengumuman_paket'] = pd.to_datetime(df['tgl_pengumuman_paket'])
+    return df
+
+# Load data with progress
+with st.spinner('⏳ Loading data...'):
+    df = load_data()
+
+# ========================================
+# HEADER
+# ========================================
+st.markdown('<h1 class="main-header">📊 Dashboard RUP 2025 - Production Ready</h1>', unsafe_allow_html=True)
+st.markdown("Dashboard lengkap untuk analisis dan monitoring Rencana Umum Pengadaan")
+st.markdown("---")
+
+# ========================================
+# SIDEBAR FILTERS
+# ========================================
+st.sidebar.header("🔍 Filter Data")
+
+# Metode filter
+st.sidebar.subheader("Metode Pengadaan")
+metode_options = ['Semua'] + sorted(df['metode_pengadaan'].unique().tolist())
+selected_metode = st.sidebar.selectbox('', metode_options, key='metode')
+
+# Jenis filter
+st.sidebar.subheader("Jenis Pengadaan")
+jenis_options = ['Semua'] + sorted(df['jenis_pengadaan'].dropna().unique().tolist())
+selected_jenis = st.sidebar.selectbox('', jenis_options, key='jenis')
+
+# Satker filter (top 20 only for performance)
+st.sidebar.subheader("Satuan Kerja")
+top_satkers = df['nama_satker'].value_counts().head(20).index.tolist()
+satker_options = ['Semua'] + sorted(top_satkers)
+selected_satker = st.sidebar.selectbox('', satker_options, key='satker')
+
+# Pagu range
+st.sidebar.subheader("Range Pagu")
+min_pagu = float(df['pagu'].min())
+max_pagu = float(df['pagu'].max())
+pagu_range = st.sidebar.slider(
+    'Dalam Miliar Rp:',
+    min_value=min_pagu/1e9,
+    max_value=max_pagu/1e9,
+    value=(min_pagu/1e9, max_pagu/1e9),
+    format="%.2f"
+)
+
+# Status filters
+st.sidebar.subheader("Status Khusus")
+show_pdn = st.sidebar.checkbox('Hanya PDN', False)
+show_ukm = st.sidebar.checkbox('Hanya UKM', False)
+show_pradipa = st.sidebar.checkbox('Hanya PRADIPA', False)
+
+# ========================================
+# APPLY FILTERS
+# ========================================
+@st.cache_data
+def apply_filters(_df, metode, jenis, satker, pagu_min, pagu_max, pdn, ukm, pradipa):
+    """Apply filters with caching"""
+    filtered = _df.copy()
+
+    if metode != 'Semua':
+        filtered = filtered[filtered['metode_pengadaan'] == metode]
+
+    if jenis != 'Semua':
+        filtered = filtered[filtered['jenis_pengadaan'] == jenis]
+
+    if satker != 'Semua':
+        filtered = filtered[filtered['nama_satker'] == satker]
+
+    filtered = filtered[
+        (filtered['pagu'] >= pagu_min * 1e9) &
+        (filtered['pagu'] <= pagu_max * 1e9)
+    ]
+
+    if pdn:
+        filtered = filtered[filtered['status_pdn'] == 'PDN']
+
+    if ukm:
+        filtered = filtered[filtered['status_ukm'] == 'UKM']
+
+    if pradipa:
+        filtered = filtered[filtered['status_pradipa'] == 'PraDIPA']
+
+    return filtered
+
+filtered_df = apply_filters(
+    df, selected_metode, selected_jenis, selected_satker,
+    pagu_range[0], pagu_range[1],
+    show_pdn, show_ukm, show_pradipa
+)
+
+# Check if empty
+if len(filtered_df) == 0:
+    st.warning("⚠️ Tidak ada data yang sesuai dengan filter yang dipilih.")
+    st.info("💡 Coba sesuaikan filter di sidebar")
+    st.stop()
+
+# ========================================
+# KEY METRICS
+# ========================================
+st.header("📈 Key Performance Indicators")
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    total_paket = len(filtered_df)
+    pct = (total_paket / len(df) * 100)
+    st.metric(
+        label="Total Paket",
+        value=f"{total_paket:,}",
+        delta=f"{pct:.1f}% dari total"
+    )
+
+with col2:
+    total_pagu = filtered_df['pagu'].sum()
+    pct_pagu = (total_pagu / df['pagu'].sum() * 100)
+    st.metric(
+        label="Total Pagu",
+        value=f"Rp {total_pagu/1e12:.2f} T",
+        delta=f"{pct_pagu:.1f}% dari total"
+    )
+
+with col3:
+    avg_pagu = filtered_df['pagu'].mean()
+    st.metric(
+        label="Rata-rata Pagu",
+        value=f"Rp {avg_pagu/1e6:.2f} Jt"
+    )
+
+with col4:
+    total_satker = filtered_df['nama_satker'].nunique()
+    st.metric(
+        label="Jumlah Satker",
+        value=f"{total_satker:,}"
+    )
+
+st.markdown("---")
+
+# ========================================
+# TABS FOR DIFFERENT ANALYSES
+# ========================================
+tab1, tab2, tab3, tab4 = st.tabs([
+    "📊 Overview & Distribution",
+    "🏢 Top Satker",
+    "📅 Trend Analysis",
+    "📋 Data Table & Export"
+])
+
+# ========================================
+# TAB 1: Overview
+# ========================================
+with tab1:
+    st.header("Overview & Distribution")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Distribusi Metode Pengadaan")
+        metode_count = filtered_df['metode_pengadaan'].value_counts()
+        fig = px.pie(
+            values=metode_count.values,
+            names=metode_count.index,
+            title='',
+            hole=0.3
+        )
+        fig.update_traces(textposition='inside', textinfo='percent+label')
+        st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+        st.subheader("Distribusi Jenis Pengadaan")
+        jenis_count = filtered_df['jenis_pengadaan'].value_counts().head(5)
+        fig = px.bar(
+            x=jenis_count.index,
+            y=jenis_count.values,
+            labels={'x': 'Jenis', 'y': 'Jumlah Paket'},
+            color=jenis_count.values,
+            color_continuous_scale='Blues'
+        )
+        fig.update_layout(showlegend=False)
+        st.plotly_chart(fig, use_container_width=True)
+
+    # Status Distribution
+    st.subheader("Distribusi Status Khusus")
+    status_data = {
+        'Status': ['PDN', 'UKM', 'PRADIPA'],
+        'Ya': [
+            (filtered_df['status_pdn'] == 'PDN').sum(),
+            (filtered_df['status_ukm'] == 'UKM').sum(),
+            (filtered_df['status_pradipa'] == 'PraDIPA').sum()
+        ],
+        'Tidak': [
+            (filtered_df['status_pdn'] != 'PDN').sum(),
+            (filtered_df['status_ukm'] != 'UKM').sum(),
+            (filtered_df['status_pradipa'] != 'PraDIPA').sum()
+        ]
+    }
+
+    fig = go.Figure(data=[
+        go.Bar(name='Ya', x=status_data['Status'], y=status_data['Ya']),
+        go.Bar(name='Tidak', x=status_data['Status'], y=status_data['Tidak'])
+    ])
+    fig.update_layout(barmode='stack', height=400)
+    st.plotly_chart(fig, use_container_width=True)
+
+# ========================================
+# TAB 2: Top Satker
+# ========================================
+with tab2:
+    st.header("Top Satuan Kerja")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Berdasarkan Jumlah Paket")
+        top_satker_count = filtered_df['nama_satker'].value_counts().head(10)
+        fig = px.bar(
+            y=top_satker_count.index,
+            x=top_satker_count.values,
+            orientation='h',
+            labels={'x': 'Jumlah Paket', 'y': 'Satker'},
+            color=top_satker_count.values,
+            color_continuous_scale='Viridis'
+        )
+        fig.update_layout(height=500, showlegend=False)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+        st.subheader("Berdasarkan Total Pagu")
+        top_satker_pagu = filtered_df.groupby('nama_satker')['pagu'].sum().sort_values(ascending=False).head(10)
+        fig = px.bar(
+            y=top_satker_pagu.index,
+            x=top_satker_pagu.values / 1e9,
+            orientation='h',
+            labels={'x': 'Total Pagu (Miliar Rp)', 'y': 'Satker'},
+            color=top_satker_pagu.values,
+            color_continuous_scale='RdYlGn'
+        )
+        fig.update_layout(height=500, showlegend=False)
+        st.plotly_chart(fig, use_container_width=True)
+
+    # Detailed table
+    st.subheader("Detail Statistik Satker")
+    satker_stats = filtered_df.groupby('nama_satker').agg({
+        'pagu': ['count', 'sum', 'mean']
+    }).round(2)
+    satker_stats.columns = ['Jumlah Paket', 'Total Pagu', 'Rata-rata Pagu']
+    satker_stats['Total Pagu (M)'] = (satker_stats['Total Pagu'] / 1e9).round(2)
+    satker_stats['Rata-rata (Jt)'] = (satker_stats['Rata-rata Pagu'] / 1e6).round(2)
+    satker_stats = satker_stats.sort_values('Total Pagu', ascending=False).head(15)
+
+    st.dataframe(
+        satker_stats[['Jumlah Paket', 'Total Pagu (M)', 'Rata-rata (Jt)']],
+        use_container_width=True
+    )
+
+# ========================================
+# TAB 3: Trend
+# ========================================
+with tab3:
+    st.header("Trend Analysis")
+
+    # Monthly trend
+    monthly_data = filtered_df.copy()
+    monthly_data['bulan'] = monthly_data['tgl_pengumuman_paket'].dt.to_period('M').astype(str)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Tren Jumlah Paket per Bulan")
+        monthly_count = monthly_data.groupby('bulan').size().reset_index(name='jumlah')
+        fig = px.line(
+            monthly_count,
+            x='bulan',
+            y='jumlah',
+            markers=True,
+            labels={'bulan': 'Bulan', 'jumlah': 'Jumlah Paket'}
+        )
+        fig.update_layout(height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+        st.subheader("Tren Total Pagu per Bulan")
+        monthly_pagu = monthly_data.groupby('bulan')['pagu'].sum().reset_index()
+        monthly_pagu['pagu_miliar'] = monthly_pagu['pagu'] / 1e9
+        fig = px.bar(
+            monthly_pagu,
+            x='bulan',
+            y='pagu_miliar',
+            labels={'bulan': 'Bulan', 'pagu_miliar': 'Total Pagu (Miliar Rp)'}
+        )
+        fig.update_layout(height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+    # Cumulative trend
+    st.subheader("Kumulatif Pengumuman Paket")
+    monthly_count['kumulatif'] = monthly_count['jumlah'].cumsum()
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=monthly_count['bulan'],
+        y=monthly_count['kumulatif'],
+        mode='lines+markers',
+        name='Kumulatif',
+        fill='tozeroy'
+    ))
+    fig.update_layout(
+        xaxis_title="Bulan",
+        yaxis_title="Jumlah Paket (Kumulatif)",
+        height=400
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+# ========================================
+# TAB 4: Data Table & Export
+# ========================================
+with tab4:
+    st.header("Data Table & Export")
+
+    # Display options
+    col1, col2 = st.columns([3, 1])
+    with col1:
+        st.write(f"Menampilkan **{len(filtered_df):,}** paket dari total **{len(df):,}** paket")
+    with col2:
+        num_rows = st.selectbox("Rows to display:", [50, 100, 200, 500], index=0)
+
+    # Prepare display data
+    display_cols = ['nama_paket', 'pagu', 'metode_pengadaan', 'jenis_pengadaan', 'nama_satker', 'status_pdn', 'status_ukm']
+    display_df = filtered_df[display_cols].copy()
+    display_df['pagu_formatted'] = display_df['pagu'].apply(lambda x: f"Rp {x/1e9:.2f} M")
+
+    # Data table
+    st.dataframe(
+        display_df[['nama_paket', 'pagu_formatted', 'metode_pengadaan', 'jenis_pengadaan', 'nama_satker', 'status_pdn', 'status_ukm']].head(num_rows),
+        use_container_width=True,
+        height=500
+    )
+
+    # Export section
+    st.subheader("📥 Export Data")
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        # CSV export
+        csv = filtered_df[display_cols].to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download CSV",
+            data=csv,
+            file_name=f"rup_filtered_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+            mime="text/csv",
+            use_container_width=True
+        )
+
+    with col2:
+        # Summary stats export
+        summary = pd.DataFrame({
+            'Metric': ['Total Paket', 'Total Pagu (T)', 'Avg Pagu (Jt)', 'Total Satker'],
+            'Value': [
+                len(filtered_df),
+                f"{filtered_df['pagu'].sum() / 1e12:.2f}",
+                f"{filtered_df['pagu'].mean() / 1e6:.2f}",
+                filtered_df['nama_satker'].nunique()
+            ]
+        })
+        csv_summary = summary.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download Summary",
+            data=csv_summary,
+            file_name=f"summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+            mime="text/csv",
+            use_container_width=True
+        )
+
+    with col3:
+        if st.button("🔄 Reset All Filters", type="primary", use_container_width=True):
+            st.rerun()
+
+# ========================================
+# FOOTER
+# ========================================
+st.markdown("---")
+st.markdown("""
+    <div style='text-align: center; color: #888; padding: 20px;'>
+        <p><strong>Dashboard RUP 2025 - Production Ready</strong></p>
+        <p>Session 4: Streamlit Dashboard Complete | Bootcamp Data Science</p>
+        <p>Data Source: Sistem Informasi Rencana Umum Pengadaan</p>
+    </div>
+""", unsafe_allow_html=True)
+
+# Sidebar footer
+with st.sidebar:
+    st.markdown("---")
+    st.subheader("ℹ️ Tentang Dashboard")
+    st.info("""
+    Dashboard ini menampilkan analisis komprehensif data RUP 2025 menggunakan:
+
+    - **Pandas**: Data manipulation
+    - **Plotly**: Interactive visualization
+    - **Streamlit**: Web dashboard
+
+    Gunakan filter di atas untuk menyesuaikan tampilan data.
+    """)
+
+    st.markdown("---")
+    st.subheader("🚀 Deploy")
+    st.write("""
+    **Cara deploy ke Streamlit Cloud:**
+    1. Push code ke GitHub
+    2. Buka streamlit.io/cloud
+    3. Connect repository
+    4. Deploy!
+    """)

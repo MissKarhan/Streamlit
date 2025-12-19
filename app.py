@@ -50,7 +50,7 @@ st.markdown("""
 def load_data():
     """Load RUP data with caching"""
     project_root = Path.cwd()
-    data_path = project_root / 'sample_data/RUP-PaketPenyedia-Terumumkan-2025.parquet'
+    data_path = project_root / 'RUP-PaketPenyedia-Terumumkan-2025.parquet'
 
     if not data_path.exists():
         st.error(f"Dataset not found at {data_path}")
